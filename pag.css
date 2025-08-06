@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  background-color: black;
+  font-family: monospace;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+canvas {
+  border: 3px solid white;
+  background-color: black;
+  display: none; /* Oculto hasta que empiece el juego */
+}
+
+#pantalla-inicial {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 40px;
+}
+
+#button-1 {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#button-2 {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  background-color: rgb(131, 12, 12);
+}
+
+input[type="checkbox"] {
+    transform: scale(2);
+    margin: 10px;
+}
+
+.instructions {
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  text-align: left;
+  margin-right: 975px;
+  width: 300px;
+}
+
+.message-unlock {
+  display: none;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  position: absolute;
+  top: 30px;
+  left: 460px;
+}
+
+#reset {
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px, 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  
+}

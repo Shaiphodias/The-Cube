@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    background-color: black;
+    display: flex;
+    align-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+canvas {
+    border: 3px solid white;
+    background-color: black;
+}
+
+#contador {
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 1px;
+    left: 10px;
+}
+
+#contador-record {
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 40px;
+    left: 10px;
+}
+
+#vidas {
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+
+#button-2 {
+    font-size: 20px;
+    font-family: monospace;
+    font-weight: bold;
+    position: relative;
+    top: 10px;
+    right: 80px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 60px;
+    height: 50px;
+}
+
+#gameOver {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: red;
+    display: none;
+    background-color: black;
+    padding: 10px 20px;
+    border: 2px solid red;
+    border-radius: 10px;
+}
+
+#button {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-family: monospace;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: monospace;
+    font-weight: bold;
+    align-content: center;
+    color: red;
+    background-color: black;
+    display: none;
+    position: relative;
+    top: 10px;
+    left: 80px;
+}
+
+#pause {
+    font-size: 20px;
+    font-family: monospace;
+    font-weight: bold;
+    position: relative;
+    top: 70px;
+    right: 140px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 70px;
+    height: 50px; 
+}
+
+#pause-Text {
+    background-color: transparent;
+    display: none;
+    font-size: 70px;
+    font-family: monospace;
+    font-weight: bold;
+    color: white;
+    padding: 10px 20px;
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 43%;
+}
