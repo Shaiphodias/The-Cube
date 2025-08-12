@@ -48,10 +48,14 @@ window.onload = () => {
         document.removeEventListener("keydown", startSound);
     }, {once: true});
 
-    //Volver al menú
+    //Volver al menú + animación
     button.addEventListener("click", () => {
-        window.location.href = "pag.html"
-    })
+        document.body.classList.add("fade-out-game");
+
+        setTimeout(() => {
+            window.location.href = "../../menu/pag.html";
+        }, 600);
+    });
 
 
     //Crear jugadores con atributos en un objeto

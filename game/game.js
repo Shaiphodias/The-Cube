@@ -22,7 +22,7 @@ window.onload = () => {
     const pauseText = document.getElementById("message-pause");
     coinRecord.textContent = `Coins Record: ${record}`;
     coinSound.volume = 0.1;
-    gameSound.volume = 0.1;
+    gameSound.volume = 0.1;  
     gameOverSound.volume = 0.1;
     pauseSound.volume = 0.1;
     
@@ -37,6 +37,7 @@ window.onload = () => {
     gameOverSound.pause();
     pauseSound.pause();
 
+
     //Sonido de fondo
     document.addEventListener("keydown", function startSound() {
         if(!paused && !gameOver) {
@@ -45,10 +46,14 @@ window.onload = () => {
         document.removeEventListener("keydown", startSound);
     }, {once: true});
 
-    //Volver al menú
+    //Volver al menú + animación
     button.addEventListener("click", () => {
-        window.location.href = "pag.html"
-    })
+        document.body.classList.add("fade-out-game");
+
+        setTimeout(() => {
+            window.location.href = "../menu/pag.html";
+        }, 600);
+    });
 
 
     //Crear jugadores con atributos en un objeto
@@ -145,7 +150,7 @@ window.onload = () => {
     });
     //Pause con el espacio del teclado
     document.addEventListener("keydown", (e) => {
-        if(e.key === " ") {
+        if(e.key === " "  && !gameOver) {  //Bug pause-Game Over
             paused = !paused;
             if(!paused) {
                 pauseText.style.display = "none";
@@ -157,7 +162,7 @@ window.onload = () => {
                 pauseSound.play();
             }
 
-            //Quiero que aparezca el mensaje de "Pause", y cuando reanude el juego si quiete y se ponga la musica del juego
+            
         }
     });
 
@@ -195,15 +200,18 @@ window.onload = () => {
     })
 
     buttonPause.addEventListener("click", (e) => {
-        paused = !paused;
-        if(!paused) {
-            pauseText.style.display = "none";
-            installGame();
-            gameSound.play();
-        } else {
-            gameSound.pause();
-            pauseText.style.display = "block"
-            pauseSound.play();
+        if(!gameOver) {
+            paused = !paused;
+            if(!paused) {
+                pauseText.style.display = "none";
+                installGame();
+                gameSound.play();
+            } else {
+                gameSound.pause();
+                pauseText.style.display = "block"
+                pauseSound.play();
+            }
+
         }
     })
 
@@ -225,6 +233,7 @@ window.onload = () => {
                 textGameOver.style.display = "block";
                 button2.style.display = "block";
                 gameOver = true;
+                paused = true
                 gameSound.pause();
                 gameOverSound.play();
                 return;
