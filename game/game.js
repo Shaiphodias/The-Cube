@@ -79,28 +79,40 @@ window.onload = () => {
         }
     }
 
-    //Enemigos
-    for(let i = 0; i < 5; i++) {
-        enemies.push({
-        x: Math.random() * (847 - 30),
-        y: Math.random() * (400 - 30),
-        color: "yellow",
-        alto: 30,
-        ancho: 30,
+    let ratio = {
+        x: 200,
+        y: 180,
+        color: "blue",
+        alto: 70,
+        ancho: 70,
         velocidad: 0,
-        });
+    }
+
+    //Enemigos
+    function createEnemy () {
+        let enemigo;
+        do{
+            enemigo = {
+                x: Math.random() * (canvas.width - 30),
+                y: Math.random() * (canvas.height - 30),
+                color: "yellow",
+                alto: 30,
+                ancho: 30,
+                velocidad: 0,
+            };
+        } while(colision(ratio, enemigo)){
+            console.log("Colision ratio");
+            return enemigo;
+        }
+    }
+
+    for(let i = 0; i < 5; i++) {
+        enemies.push(createEnemy());
     }
 
     if(difficultyActive) {
     for(let i = 0; i < 5; i++) {
-        enemies.push({
-        x: Math.random() * (847 - 30),
-        y: Math.random() * (400 - 30),
-        color: "yellow",
-        alto: 30,
-        ancho: 30,
-        velocidad: 0,
-        });
+        enemies.push(createEnemy())
     }
     }
 
@@ -228,7 +240,7 @@ window.onload = () => {
         
         //Comprobar enemigos
         paintEnemies();
-        enemies.forEach((enemigo) => {
+        for(let enemigo of enemies) {
             if(colision(player, enemigo) || (player2 && colision(player2, enemigo))) {
                 textGameOver.style.display = "block";
                 button2.style.display = "block";
@@ -236,9 +248,9 @@ window.onload = () => {
                 paused = true
                 gameSound.pause();
                 gameOverSound.play();
-                return;
+                break;
             }
-        });
+        }
 
         //Comprobar monedas
         paintCoins();

@@ -34,7 +34,7 @@ window.onload = () => {
     let teclas = {};
     let coinsCollected = 0;
     let vidas = 2;
-    livesText.textContent = `PS: ${vidas}`;
+    livesText.textContent = `HP: ${vidas}`;
     coinSound.pause();
     gameOverSound.pause();
     HitSound.pause();
@@ -68,6 +68,15 @@ window.onload = () => {
         velocidad: 4,
     }
 
+    let ratio = {
+        x: 200,
+        y: 180, 
+        color: "blue",
+        alto: 30,
+        ancho: 30,
+        velocidad: 0,
+    }
+
     //Enemigos
     for(let i = 0; i < 5; i++) {
         enemies.push({
@@ -80,6 +89,29 @@ window.onload = () => {
         direccionX: Math.random() < 0.5 ? -1 : 1,
         direccionY: Math.random() < 0.5 ? -1 : 1,
         });
+    }
+
+    //Enemigos
+    function createEnemy() {
+        let enemigo
+        do{
+            enemigo = {
+                x: Math.random() * (canvas.width - 30),
+                y: Math.random() * (canvas.height - 30),
+                color: "yellow",
+                alto: 30,
+                ancho: 30,
+                velocidad: difficultyActive ? 1 + Math.random() * 1.5 : 0.5 + Math.random(),
+                direccionX: Math.random() < 0.5 ? -1 : 1,
+                direccionY: Math.random() < 0.5 ? -1 : 1,
+            }
+        } while(colision(ratio, enemigo)) 
+            console.log("Colision ratio");
+            return enemigo;
+    }
+
+    for(let l = 0; l < 1; l++) {
+        enemies.push(createEnemy());
     }
 
     //Monedas
@@ -181,7 +213,7 @@ window.onload = () => {
         if(!cantakeDamage) return;
 
         vidas--;
-        livesText.textContent = `PS: ${vidas}`;
+        livesText.textContent = `HP: ${vidas}`;
 
         cantakeDamage = false;
         setTimeout(() => {
@@ -236,11 +268,11 @@ window.onload = () => {
         
         //Comprobar enemigos
         paintEnemies();
-        enemies.forEach((enemigo) => {
-           if(colision(player, enemigo)) {
-            takeDamage()
-           }
-        });
+        for(let enemigo of enemies) {
+            if(colision(player, enemigo)) {
+                takeDamage();
+            }
+        }
 
         //Comprobar monedas
         paintCoins();

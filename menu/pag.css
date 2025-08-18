@@ -1,13 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  line-height: 1.5;
+  font-family: monospace, monospace;
+}
+
+@supports (display: grid) {
+  .container {
+    display: -ms-grid;
+    display: grid;
+  }
+}
+
+.element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+
 body {
   margin: 0;
   background-color: black;
   font-family: monospace;
   color: white;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: relative;
 }
 
@@ -15,6 +53,8 @@ canvas {
   border: 3px solid white;
   background-color: black;
   display: none; /* Oculto hasta que empiece el juego */
+  max-width: 100%;
+  height: auto;
 }
 
 #pantalla-inicial {
@@ -22,7 +62,9 @@ canvas {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   text-align: center;
   font-size: 40px;
 }
@@ -51,8 +93,10 @@ canvas {
 }
 
 input[type="checkbox"] {
-    transform: scale(2);
-    margin: 10px;
+    -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+            transform: scale(2);
+    margin: 5%;
 }
 
 .instructions {
@@ -92,35 +136,89 @@ input[type="checkbox"] {
 }
 
 .fade-out {
-  animation: fadeBlurOut 0.8s ease forwards;
+  -webkit-animation: fadeBlurOut 0.8s ease forwards;
+          animation: fadeBlurOut 0.8s ease forwards;
+}
+
+@-webkit-keyframes fadeBlurOut {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
 }
 
 @keyframes fadeBlurOut {
   0% {
     opacity: 1;
-    transform: scale(1);
-    filter: blur(0px);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
   }
   100% {
     opacity: 0;
-    transform: scale(0.95);
-    filter: blur(10px);
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
   }
 }
 
 .fade-in-menu {
-    animation: gameFadeIn 0.6s ease-out forwards;
+    -webkit-animation: gameFadeIn 0.6s ease-out forwards;
+            animation: gameFadeIn 0.6s ease-out forwards;
+}
+
+@-webkit-keyframes gameFadeIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+        -webkit-filter: blur(8px);
+                filter: blur(8px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        -webkit-filter: blur(0px);
+                filter: blur(0px);
+    }
 }
 
 @keyframes gameFadeIn {
     0% {
         opacity: 0;
-        transform: scale(1.05);
-        filter: blur(8px);
+        -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+        -webkit-filter: blur(8px);
+                filter: blur(8px);
     }
     100% {
         opacity: 1;
-        transform: scale(1);
-        filter: blur(0px);
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        -webkit-filter: blur(0px);
+                filter: blur(0px);
     }
+}
+
+#backgroundCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Siempre detrás del contenido */
+    width: 100%;
+    height: 100%;
+    background: #000; /* Fondo base */
 }
