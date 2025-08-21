@@ -4,40 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pag.css">
-    <title>The Cube</title>
+    <title>The Cube || Menú</title>
 </head>
 <body>
     <div id="menu-screen">
         <div id="pantalla-inicial">
             <h1>The Cube</h1>
-            <button id="button-1">Begin</button>
-            <button id="button-2"></button>
-            <span class="message-unlock"></span>
-            <button id="reset" onclick="localStorage.clear(); location.reload();">🧹 Reset Progress</button>
+            <button id="button-1" data-key="begin">Begin</button>
+            <button id="button-2" data-key="challenge"></button>
+            <span class="message-unlock" data-key="unlock"></span>
+            <button data-key="reset" id="reset" onclick="localStorage.clear(); location.reload();">🧹 Reset Progress</button>
             <ul id="type">
                 <li>
-                    <p>More Difficulty?</p>
+                    <p data-key="difficulty">More Difficulty?</p>
                     <input type="checkbox" id="difficulty">
                 </li>
                 <li>
-                    <p>2 players</p>
+                    <p data-key="players">2 players</p>
                     <input type="checkbox" id="players">
                 </li>
             </ul>
         </div>
-        
-        <div class="instructions">
-            <h1>Objetives</h1>
-            <p>You've to pick the coins(cubes green) without touching the enemies(cubes yellows)</p>
-            <p>You move with the arrows and if you select the 2 players mode, with keys WASD</p>
-            <p>In addition to pause the game with the button in the top right, you can also with the space key</p>
-            <p>In the Challenge Mode, you can't play with 2 players(At the moment)</p>
+
+            <div class="instructions">
+                <h1 data-key="objectives">Objectives</h1>
+                <p data-key="rule1">You've to pick the coins(cubes green) without touching the enemies(cubes yellows).</p>
+                <p data-key="rule2">You move with the arrows and if you select the 2 players mode, with keys WASD.</p>
+                <p data-key="rule3">In addition to pause the game with the button in the top right, you can also with the space key.</p>
+                <p data-key="rule4">In the Challenge Mode, you can't play with 2 players(At the moment).</p>
+            </div>
+            <div id="lenguage">
+                <label>
+                    Lenguage <input list="leng">
+                    
+                    <datalist id="leng">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                    </datalist>
+                </label>
+            </div>
         </div>
-    </div>
-    <div id="game-wrapper">
-        <canvas id="game" width="847" height="400"></canvas>
-        <audio src="sounds-image/Menu-Sound.mp3" id="game-sound" loop></audio>
-    </div>
+        <div id="game-wrapper" class="hidden">
+            <canvas id="game" width="847" height="400"></canvas>
+        </div>
+    <audio src="../sounds-image/Menu-Sound.mp3" id="game-sound" loop></audio>
 
     <script src="pag.js"></script>
 </body>

@@ -56,3 +56,68 @@ function startGame () {
     window.location.href = "../game/game.html";
    }, 800);
 }
+
+const translations = {
+    en: {
+    begin: "Begin",
+    challenge: "Challenge Mode",
+    unlock: "",
+    reset: "🧹 Reset Progress",
+    difficulty: "More Difficulty?",
+    players: "2 players",
+    objectives: "Objectives",
+    rule1: "You've to pick the coins (green cubes) without touching the enemies (yellow cubes).",
+    rule2: "You move with the arrows and if you select the 2 players mode, with keys WASD.",
+    rule3: "In addition to pause the game with the button in the top right, you can also with the space key.",
+    rule4: "In the Challenge Mode, you can't play with 2 players (At the moment)."
+  },
+  es: {
+    begin: "Comenzar",
+    challenge: "Modo Desafío",
+    unlock: "",
+    reset: "🧹 Reiniciar Progreso",
+    difficulty: "¿Más dificultad?",
+    players: "2 jugadores",
+    objectives: "Objetivos",
+    rule1: "Debes recoger las monedas (cubos verdes) sin tocar a los enemigos (cubos amarillos).",
+    rule2: "Te mueves con las flechas y si seleccionas el modo de 2 jugadores, con las teclas WASD.",
+    rule3: "Además de pausar el juego con el botón arriba a la derecha, también puedes con la tecla espacio.",
+    rule4: "En el Modo Desafío no puedes jugar con 2 jugadores (por ahora)."
+  },
+  fr: {
+    begin: "Commencer",
+    challenge: "Mode Défi",
+    unlock: "",
+    reset: "🧹 Réinitialiser la progression",
+    difficulty: "Plus de difficulté ?",
+    players: "2 joueurs",
+    objectives: "Objectifs",
+    rule1: "Vous devez ramasser les pièces (cubes verts) sans toucher les ennemis (cubes jaunes).",
+    rule2: "Vous vous déplacez avec les flèches et si vous sélectionnez le mode 2 joueurs, avec les touches WASD.",
+    rule3: "En plus de mettre le jeu en pause avec le bouton en haut à droite, vous pouvez aussi utiliser la barre d'espace.",
+    rule4: "En Mode Défi, vous ne pouvez pas jouer à 2 joueurs (pour le moment)."
+  }
+};
+
+//Function to change lenguage
+
+function changelen (lang) {
+    if(!translations) return;
+
+    document.documentElement.setAttribute("lang", lang);
+
+    document.querySelectorAll("[data-key]").forEach(el => {
+        let key = el.getAttribute("data-key");
+        el.textContent = translations[lang][key] || el.textContent;
+    });
+
+    //Save lenguage
+    localStorage.setItem("idioma", lang);
+}
+
+document.querySelector("#lenguage input").addEventListener("change", (e) => {
+    changelen(e.target.value);
+});
+
+const lengSave = localStorage.getItem("idioma") || "en";
+changelen(lengSave);

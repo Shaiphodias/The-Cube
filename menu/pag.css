@@ -52,7 +52,7 @@ body {
 canvas {
   border: 3px solid white;
   background-color: black;
-  display: none; /* Oculto hasta que empiece el juego */
+  display: none;
   max-width: 100%;
   height: auto;
 }
@@ -100,14 +100,20 @@ input[type="checkbox"] {
 }
 
 .instructions {
-  font-size: 20px;
+  font-size: 1.4vw;
   font-family: monospace;
   font-weight: bold;
   color: white;
-  background-color: black;
+  background-color: transparent;
   text-align: left;
-  margin-right: 975px;
-  width: 300px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 25%;
+  margin: 0;
+  padding: 2%;
+
 }
 
 .message-unlock {
@@ -127,7 +133,7 @@ input[type="checkbox"] {
   font-family: monospace;
   font-weight: bold;
   margin: 10px;
-  padding: 10px, 20px;
+  padding: 10px 20px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -217,8 +223,50 @@ input[type="checkbox"] {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: -1; /* Siempre detrás del contenido */
+    z-index: -1;
     width: 100%;
     height: 100%;
-    background: #000; /* Fondo base */
+    background: #000;
+}
+
+#lenguage {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#lenguage label {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+#lenguage input[list] {
+  background: #111;
+  border: 2px solid #444;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+  width: 140px;
+  cursor: pointer;
+}
+
+#lenguage input[list]:hover {
+  border-color: #0ff;
+  box-shadow: 0 0 8px #0ff5;
+}
+
+#lenguage input[list]:focus {
+  border-color: #0ff;
+  box-shadow: 0 0 10px #0ff9, 0 0 20px #0ff4 inset;
 }
