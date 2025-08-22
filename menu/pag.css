@@ -229,7 +229,7 @@ input[type="checkbox"] {
     background: #000;
 }
 
-#lenguage {
+#language {
   font-family: monospace;
   font-weight: bold;
   font-size: 18px;
@@ -239,34 +239,34 @@ input[type="checkbox"] {
   right: 20px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+  z-index: 100;
 }
 
-#lenguage label {
+#language label {
   font-size: 14px;
   color: #aaa;
-  margin-bottom: 5px;
 }
 
-#lenguage input[list] {
+#language select {
   background: #111;
   border: 2px solid #444;
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 6px 10px;
   color: white;
   font-size: 16px;
   transition: all 0.3s ease;
   outline: none;
-  width: 140px;
   cursor: pointer;
+  width: 150px;
 }
 
-#lenguage input[list]:hover {
+#language select:hover {
   border-color: #0ff;
   box-shadow: 0 0 8px #0ff5;
 }
 
-#lenguage input[list]:focus {
+#language select:focus {
   border-color: #0ff;
   box-shadow: 0 0 10px #0ff9, 0 0 20px #0ff4 inset;
 }

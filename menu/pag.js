@@ -4,6 +4,8 @@ gameSound.volume = 0.5;
 const button = document.getElementById("button-1");
 const challengeButton = document.getElementById("button-2");
 const wrapper = document.getElementById("game-wrapper");
+const lenguage = document.getElementById("leng");
+
 
 const record = parseInt(localStorage.getItem("coinRecord") || "0", 10);
 const unlocked = record >= 15; //Cambiar a 40 version de juego
@@ -115,9 +117,10 @@ function changelen (lang) {
     localStorage.setItem("idioma", lang);
 }
 
-document.querySelector("#lenguage input").addEventListener("change", (e) => {
-    changelen(e.target.value);
+document.querySelector("#lang").addEventListener("change", (e) => {
+  changelen(e.target.value);
 });
 
 const lengSave = localStorage.getItem("idioma") || "en";
+document.querySelector("#lang").value = lengSave;
 changelen(lengSave);
