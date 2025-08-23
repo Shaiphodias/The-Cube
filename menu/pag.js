@@ -5,6 +5,8 @@ const button = document.getElementById("button-1");
 const challengeButton = document.getElementById("button-2");
 const wrapper = document.getElementById("game-wrapper");
 const lenguage = document.getElementById("leng");
+const messageUnlock = document.getElementById("message-unlock");
+messageUnlock.textContent = "";
 
 
 const record = parseInt(localStorage.getItem("coinRecord") || "0", 10);
@@ -17,8 +19,9 @@ if(unlocked) {
 } else {
     challengeButton.textContent = "🔒 Challenge Mode";
     challengeButton.style.opacity = 0.5;
-    challengeButton.style.pointerEvents = "none";  
+    challengeButton.style.pointerEvents = "none"; 
 }
+
 
 function startChallg() {
     const menu = document.getElementById("menu-screen");
@@ -82,9 +85,9 @@ const translations = {
     players: "2 jugadores",
     objectives: "Objetivos",
     rule1: "Debes recoger las monedas (cubos verdes) sin tocar a los enemigos (cubos amarillos).",
-    rule2: "Te mueves con las flechas y si seleccionas el modo de 2 jugadores, con las teclas WASD.",
+    rule2: "Te mueves con las flechas y sí seleccionas el modo de 2 jugadores, con las teclas WASD.",
     rule3: "Además de pausar el juego con el botón arriba a la derecha, también puedes con la tecla espacio.",
-    rule4: "En el Modo Desafío no puedes jugar con 2 jugadores (por ahora)."
+    rule4: "En el Modo Desafío no puedes jugar con 2 jugadores (por el momento)."
   },
   fr: {
     begin: "Commencer",
